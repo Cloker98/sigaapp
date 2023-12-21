@@ -1,29 +1,28 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
-import { ConferenceData } from '../../providers/conference-data';
-import { ActivatedRoute } from '@angular/router';
-import { UserData } from '../../providers/user-data';
-import { Matricula } from '../../interfaces/matricula';
-import { MatriculaData } from '../../providers/matricula-data';
+import { ActivatedRoute } from "@angular/router";
+import { MatriculaData } from "../../../providers/matricula-data";
+import { UserData } from "../../../providers/user-data";
+import { Matricula } from "../../interfaces/matricula";
 
 @Component({
-  selector: 'page-matricula-detail',
-  styleUrls: ['./matricula-detail.scss'],
-  templateUrl: 'matricula-detail.html'
+  selector: "page-matricula-detail",
+  styleUrls: ["./matricula-detail.scss"],
+  templateUrl: "matricula-detail.html",
 })
 export class MatriculaDetailPage {
   matricula: Matricula;
   isFavorite = false;
-  defaultHref = '';
+  defaultHref = "";
 
   constructor(
     private matriculaData: MatriculaData,
     private userProvider: UserData,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ionViewWillEnter() {
-/*
+    /*
     this.dataProvider.load().subscribe((data: any) => {
       if (data && data.schedule && data.schedule[0] && data.schedule[0].groups) {
         const sessionId = this.route.snapshot.paramMap.get('sessionId');
@@ -44,10 +43,10 @@ export class MatriculaDetailPage {
         }
       }
     });
-*/      
-      const matriculaId = this.route.snapshot.paramMap.get('matriculaId');
+*/
+    const matriculaId = this.route.snapshot.paramMap.get("matriculaId");
 
-      this.matricula = this.matriculaData.detail(matriculaId);
+    this.matricula = this.matriculaData.detail(matriculaId);
   }
 
   ionViewDidEnter() {
@@ -55,11 +54,11 @@ export class MatriculaDetailPage {
   }
 
   sessionClick(item: string) {
-    console.log('Clicked', item);
+    console.log("Clicked", item);
   }
 
   toggleFavorite() {
-/*
+    /*
     if (this.userProvider.hasFavorite(this.session.name)) {
       this.userProvider.removeFavorite(this.session.name);
       this.isFavorite = false;
@@ -67,11 +66,11 @@ export class MatriculaDetailPage {
       this.userProvider.addFavorite(this.session.name);
       this.isFavorite = true;
     }
-*/    
+*/
   }
 
   shareSession() {
-    console.log('Clicked share session');
+    console.log("Clicked share session");
   }
 
   alterarStatus(status: string) {
