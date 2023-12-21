@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Matrícula 2024/1</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list #matriculaList>
+      <ion-item *ngFor="let matricula of matriculas" routerLink="/app/tabs/matricula-list/matricula/{{matricula.id}}">
+          <ion-label>
+            <h3>{{matricula.turma.disciplina.codigo}} - {{matricula.turma.codigo}}</h3>
+            <p>{{matricula.turma.disciplina.nome}}</p>
+            <p>{{matricula.status}}</p>
+          </ion-label>
+      </ion-item>
+  </ion-list>
+</ion-content>

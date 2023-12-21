@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Perfil do Aluno</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="username" class="ion-padding-top ion-text-center">
+    <img src="https://www.gravatar.com/avatar?d=mm&s=140" alt="avatar">
+    <h2>{{username}}</h2>
+
+    <ion-list inset>
+      <ion-item>Nome: {{aluno.nome}}</ion-item>
+      <ion-item>Curso: {{aluno.curso.nome}}</ion-item>
+      <ion-item>Currículo: {{aluno.curriculo}}</ion-item>
+      <ion-item>Ingresso: {{aluno.periodoIngresso.ano}}/{{aluno.periodoIngresso.numero}}</ion-item>
+    </ion-list>
+    <p></p>
+    <ion-list inset>
+      <ion-item (click)="updatePicture()">Alterar imagem de perfil</ion-item>
+      <ion-item (click)="changePassword()">Alterar senha</ion-item>
+      <ion-item (click)="logout()">Logout</ion-item>
+    </ion-list>
+  </div>
+  </ion-content>

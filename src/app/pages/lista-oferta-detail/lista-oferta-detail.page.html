@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="defaultHref"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Lista de Oferta 2024/1</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p style="text-align:center">Turmas</p>
+  <ion-list #turmaList>
+    <ion-item *ngFor="let turma of turmas">
+      <ion-label>
+        <h3>{{turma.disciplina.codigo}} - {{turma.codigo}}</h3>
+        <p>{{turma.disciplina.nome}}</p>
+        <p *ngFor="let horario of turma.horario">{{horario.dia}}&nbsp;{{horario.inicio}}-{{horario.fim}}</p>
+        <ion-button (click)="confirmarInclusaoTurma(turma)">Adicionar</ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

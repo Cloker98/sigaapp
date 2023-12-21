@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Lista de Oferta 2024/1</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p style="text-align:center">Disciplina ou Código da Disciplina</p>
+  <ion-searchbar (ionInput)="getDisciplinas($event)" placeholder="Ex: MAT0025 ou calculo"></ion-searchbar>
+  <ion-list #disciplinaList>
+    <ion-item *ngFor="let disciplina of disciplinas" routerLink="/app/tabs/lista-oferta/disciplina/{{disciplina.codigo}}">
+      <ion-label>
+        <h3>{{disciplina.codigo}}</h3>
+        <p>{{disciplina.nome}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

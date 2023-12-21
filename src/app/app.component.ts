@@ -10,6 +10,7 @@ import { SplashScreen } from '@capacitor/splash-screen';
 import { Storage } from '@ionic/storage-angular';
 
 import { UserData } from './providers/user-data';
+import { async } from 'rxjs/internal/scheduler/async';
 
 @Component({
   selector: 'app-root',
@@ -19,28 +20,32 @@ import { UserData } from './providers/user-data';
 })
 export class AppComponent implements OnInit {
   appPages = [
-    {
+/*    {
       title: 'Aluno',
-      url: '/app/tabs/aluno',
+      url: '/app/tabs/account',
       icon: 'person'
-    },
+    },*/
     {
       title: 'Matrícula',
       url: '/app/tabs/matricula-list',
-      icon: 'book'
+      icon: 'book',
+      showIfNotLoggedIn: false
     },
     {
-      title: 'Lista de oferta',
+      title: 'Lista de Oferta',
       url: '/app/tabs/lista-oferta',
-      icon: 'list'
+      icon: 'list',
+      showIfNotLoggedIn: true
     },
     {
       title: 'Sigaa App',
       url: '/app/tabs/about',
-      icon: 'information-circle'
+      icon: 'information-circle',
+      showIfNotLoggedIn: true
     }
   ];
   loggedIn = false;
+  loginFailed = false;
   dark = false;
 
   constructor(
@@ -105,20 +110,38 @@ export class AppComponent implements OnInit {
   listenForLoginEvents() {
     window.addEventListener('user:login', () => {
       this.updateLoggedInStatus(true);
-    });
-
-    window.addEventListener('user:signup', () => {
-      this.updateLoggedInStatus(true);
+      this.router.navigateByUrl('/app/tabs/matricula-list');
     });
 
     window.addEventListener('user:logout', () => {
       this.updateLoggedInStatus(false);
     });
+
+    window.addEventListener('user:loginFailed', async () => {
+      this.loginFailed = true;
+      console.log('loginFailed ' + this.loginFailed);
+
+      // Create a toast
+        const toast = await this.toastCtrl.create({
+          header: 'Credenciais de usuário inválidas. ',
+          duration: 3000,
+          position: 'top'
+  /*        buttons: [{
+            text: 'Close',
+            role: 'cancel'
+          }] */
+        });
+
+        // Present the toast at the bottom of the page
+        await toast.present();
+      
+    });
+
   }
 
   logout() {
     this.userData.logout().then(() => {
-      return this.router.navigateByUrl('/app/tabs/schedule');
+      return this.router.navigateByUrl('/app/tabs/about');
     });
   }
 
@@ -128,3 +151,7 @@ export class AppComponent implements OnInit {
     this.router.navigateByUrl('/tutorial');
   }
 }
+function presentToast(position: any, arg1: string) {
+  throw new Error('Function not implemented.');
+}
+
