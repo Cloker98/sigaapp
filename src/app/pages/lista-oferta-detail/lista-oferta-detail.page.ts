@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { AlertController } from "@ionic/angular";
-import { MatriculaData } from "../../../providers/matricula-data";
-import { TurmaData } from "../../../providers/turma-data";
 import { Turma } from "../../interfaces/turma";
+import { MatriculaData } from "../../providers/matricula-data";
+import { TurmaData } from "../../providers/turma-data";
 
 @Component({
   selector: "app-lista-oferta",

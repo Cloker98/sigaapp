@@ -28,9 +28,9 @@ const routes: Routes = [
           {
             path: "matricula/:matriculaId",
             loadChildren: () =>
-              import(
-                "../matricula-list/matricula-detail/matricula-detail.module"
-              ).then((m) => m.MatriculaDetailModule),
+              import("../matricula-detail/matricula-detail.module").then(
+                (m) => m.MatriculaDetailModule
+              ),
           },
         ],
       },
@@ -47,9 +47,9 @@ const routes: Routes = [
           {
             path: "disciplina/:disciplinaId",
             loadChildren: () =>
-              import(
-                "../lista-oferta/lista-oferta-detail/lista-oferta-detail.module"
-              ).then((m) => m.ListaOfertaDetailPageModule),
+              import("../lista-oferta-detail/lista-oferta-detail.module").then(
+                (m) => m.ListaOfertaDetailPageModule
+              ),
           },
         ],
       },

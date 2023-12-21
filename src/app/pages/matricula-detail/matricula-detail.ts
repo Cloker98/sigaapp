@@ -1,9 +1,9 @@
 import { Component } from "@angular/core";
 
 import { ActivatedRoute } from "@angular/router";
-import { MatriculaData } from "../../../providers/matricula-data";
-import { UserData } from "../../../providers/user-data";
 import { Matricula } from "../../interfaces/matricula";
+import { MatriculaData } from "../../providers/matricula-data";
+import { UserData } from "../../providers/user-data";
 
 @Component({
   selector: "page-matricula-detail",
