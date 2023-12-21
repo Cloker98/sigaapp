@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="defaultHref"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>  
+</ion-header>
+
+<ion-content>
+  <ion-item *ngIf="matricula" class="ion-padding">
+      <ion-label>
+        <h3>{{matricula.turma.disciplina.codigo}} - {{matricula.turma.codigo}}</h3>
+        <p>{{matricula.turma.disciplina.nome}}</p>
+        <p>{{matricula.status}}</p>
+      </ion-label>
+  </ion-item>
+
+  <!--ion-footer>
+    <button ion-button icon-left color="danger" (click)="alterarStatus('Retirado')">
+      <ion-icon name="close-circle"></ion-icon>
+      Rejeitar
+    </button>  
+    <button ion-button icon-left color="secondary" (click)="alterarStatus('Confirmado')">
+      <ion-icon name="checkmark-circle"></ion-icon>
+      Confirmar
+    </button>  
+  </ion-footer-->
+
+  <ion-list>
+    <ion-item (click)="alterarStatus('Retirado')" button>
+      <ion-label color="danger">Retirar</ion-label>
+    </ion-item>
+    <ion-item (click)="alterarStatus('Confirmado')" button>
+      <ion-label color="primary">Confirmar</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!--ion-list>
+    <ion-item (click)="sessionClick('watch')" button>
+      <ion-label color="primary">Watch</ion-label>
+    </ion-item>
+    <ion-item (click)="sessionClick('add to calendar')" button>
+      <ion-label color="primary">Add to Calendar</ion-label>
+    </ion-item>
+    <ion-item (click)="sessionClick('mark as unwatched')" button>
+      <ion-label color="primary">Mark as Unwatched</ion-label>
+    </ion-item>
+    <ion-item (click)="sessionClick('download video')" button>
+      <ion-label color="primary">Download Video</ion-label>
+      <ion-icon slot="end" color="primary" size="small" name="cloud-download"></ion-icon>
+    </ion-item>
+    <ion-item (click)="sessionClick('leave feedback')" button>
+      <ion-label color="primary">Leave Feedback</ion-label>
+    </ion-item>
+  </ion-list-->
+</ion-content>
